@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3020;
 
 const app = express();
 
-//require("./src/database")
+require("./src/database")
 
 app.use(cors());
 app.use(express.json());
