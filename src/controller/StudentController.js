@@ -5,10 +5,9 @@ module.exports = {
 //List Students
     async index(req, res){
         try {
-            const student = await Student.findAll();
-    
-            return res.json(student); 
-            
+            const student = await Student.findAll();    
+            return res.json(student);    
+
         } catch (error) {
             return res.status(400).json({ error: "can't list all"})
         }
@@ -22,8 +21,8 @@ module.exports = {
                     id : req.params.id
                 }
             });
-            return res.json(student); 
-            
+            return res.json(student);  
+
         } catch (error) {
             return res.status(400).json({ error: "can't list by Id"})
         }
@@ -33,13 +32,12 @@ module.exports = {
 //Create Student
     async store(req, res){
         const { ra, name, email, cpf } = req.body;
-
         try {
             await Student.create({
                ra, name, email, cpf
             });    
             return res.status(200).json({ success: "Ra, Name, Email and Cpf created successfully!"}); 
-
+       
         } catch (error) {
             return res.status(400).json({ error: "RA already exists, please change"});
         }
@@ -57,7 +55,7 @@ module.exports = {
                 },
              });
             return res.status(200).json({ success: "name and email successfully changed!"}); 
-            
+        
         } catch (error) {
             return res.status(400).json(error)
         }
@@ -72,7 +70,7 @@ module.exports = {
                 }
             });
             return res.status(200).json({ deleted: "deleted successfully"});
-            
+        
         } catch (error) {
             return res.status(400).json({ error: "can't delete"})
         }
